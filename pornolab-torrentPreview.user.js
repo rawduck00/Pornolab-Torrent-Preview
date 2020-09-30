@@ -15,8 +15,7 @@ function getPic(e) {
       e.target.classList.contains("tt-text")) &&
     !e.target.querySelector(".customImg")
   ) {
-    let url =
-      "https://pornolab.net/forum" + e.target.getAttribute("href").slice(1);
+    let url = "https://pornolab.net/forum" + e.target.getAttribute("href").slice(1);
 
     let r = new XMLHttpRequest();
     r.open("GET", url, false);
@@ -28,10 +27,10 @@ function getPic(e) {
 
     let div = document.createElement("div");
     div.style.cssText = `position: absolute; 
-		                     width: 460px; 
-							 height: 300px; 
-							 left: 0; 
-							 z-index: 10;`;
+		         width: 460px; 
+			 height: 300px; 
+			 left: 0; 
+			 z-index: 10;`;
 
     e.clientY < 300 ? (div.style.bottom = "auto") : (div.style.bottom = "100%");
     div.className = "customImg";
@@ -39,8 +38,8 @@ function getPic(e) {
     let img = document.createElement("img");
     img.setAttribute("src", imgSrc);
     img.style.cssText = `width: 100%;
-		                     height: 100%;
-							 object-fit: contain;`;
+		         height: 100%;
+			 object-fit: contain;`;
 
     div.appendChild(img);
 
