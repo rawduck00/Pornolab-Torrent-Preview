@@ -4,7 +4,7 @@
 // @author       ducklover
 // @description  Allows to display torrent's poster image as preview on search page when hover over link
 // @copyright    2020, ducklover (https://openuserjs.org/users/ducklover)
-// @include      /^https?:\/\/pornolab\.net\/forum\/(tracker|viewforum).*/
+// @include      /^https?:\/\/pornolab\.net\/forum\/(tracker|viewforum|search).*/
 // @license      MIT
 // @run-at       document-end
 // ==/UserScript==
@@ -12,7 +12,8 @@
 function getPic(e) {
   if (
     (e.target.classList.contains("tLink") ||
-      e.target.classList.contains("tt-text")) &&
+      e.target.classList.contains("tt-text") ||
+      e.target.classList.contains("topictitle")) &&
     !e.target.querySelector(".customImg")
   ) {
     let url = "https://pornolab.net/forum" + e.target.getAttribute("href").slice(1);
@@ -26,10 +27,10 @@ function getPic(e) {
       .querySelector(".postImg").title;
 
     let div = document.createElement("div");
-    div.style.cssText = `position: absolute; 
-		         width: 460px; 
-			 height: 300px; 
-			 left: 0; 
+    div.style.cssText = `position: absolute;
+		         width: 460px;
+			 height: 300px;
+			 left: 0;
 			 z-index: 10;`;
 
     e.clientY < 300 ? (div.style.bottom = "auto") : (div.style.bottom = "100%");
@@ -63,7 +64,8 @@ function getPic(e) {
 function hidePic(e) {
   if (
     (e.target.classList.contains("tLink") ||
-      e.target.classList.contains("tt-text")) &&
+      e.target.classList.contains("tt-text") ||
+      e.target.classList.contains("topictitle")) &&
     e.target.querySelector(".customImg")
   ) {
     e.target.querySelector(".customImg").style.display = "none";
